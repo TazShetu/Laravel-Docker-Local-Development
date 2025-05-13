@@ -18,7 +18,10 @@ services:
       [
         "/bin/sh",
         "-c",
+        # For Windows 11
         "chmod +x /app/docker-entrypoint.sh && /app/docker-entrypoint.sh",
+        # For Windows 10
+        # "cat /app/docker-entrypoint.sh > /tmp/entrypoint.sh && chmod +x /tmp/entrypoint.sh && /tmp/entrypoint.sh",
       ]
     restart: unless-stopped
 
@@ -41,10 +44,13 @@ services:
       [
         "/bin/sh",
         "-c",
+        # For Windows 11
         "chmod +x /app/docker-entrypoint.sh && /app/docker-entrypoint.sh",
+        # For Windows 10
+        # "cat /app/docker-entrypoint.sh > /tmp/entrypoint.sh && chmod +x /tmp/entrypoint.sh && /tmp/entrypoint.sh",
       ]
     restart: unless-stopped
-
+    
   # app3:
   #   build:
   #     context: .
@@ -64,6 +70,9 @@ services:
   #     [
   #       "/bin/sh",
   #       "-c",
+  #       # For Windows 11
   #       "chmod +x /app/docker-entrypoint.sh && /app/docker-entrypoint.sh",
+  #       # For Windows 10
+  #       # "cat /app/docker-entrypoint.sh > /tmp/entrypoint.sh && chmod +x /tmp/entrypoint.sh && /tmp/entrypoint.sh",
   #     ]
   #   restart: unless-stopped

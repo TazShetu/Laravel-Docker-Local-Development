@@ -108,6 +108,7 @@ docker exec -it project1-app(container_name) php artisan migrate:fresh --seed --
 
 - Place project in projects directory/folder
 - Add that project in docker-compose.override.yml accordingly [as the comment]
+   - For Windows 10 do not forget to change docker-compose.override.yml accordingly
 - Add the project in start and stop scripts in docker-scripts folder [as the comment]
 - Copy docker-entrypoint.sh to the project directory/folder
 - Edit .env accordingly [DB Connection]
