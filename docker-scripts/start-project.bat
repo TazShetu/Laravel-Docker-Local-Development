@@ -22,9 +22,16 @@ if not exist "projects\%PROJECT_NAME%" (
 :: Choose appropriate service name based on project
 if "%PROJECT_NAME%"=="project1" (
     set SERVICE_NAME=app1
+    set PORT=8001
 ) else if "%PROJECT_NAME%"=="project2" (
     set SERVICE_NAME=app2
-) else (
+    set PORT=8002
+) 
+:: else if "%PROJECT_NAME%"=="project3" (
+::    set SERVICE_NAME=app3
+::    set PORT=8003
+:: ) 
+else (
     echo Unsupported project: %PROJECT_NAME%
     exit /b 1
 )
@@ -35,9 +42,5 @@ docker-compose up -d mysql phpmyadmin
 
 echo Starting %PROJECT_NAME%...
 docker-compose up -d %SERVICE_NAME%
-
-:: Get the port
-set PORT=8001
-if "%SERVICE_NAME%"=="app2" set PORT=8002
 
 echo Started %PROJECT_NAME% on http://localhost:%PORT%

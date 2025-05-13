@@ -21,6 +21,9 @@ case "$PROJECT_NAME" in
     project1)
         SERVICE_NAME=app1
         ;;
+    # project3)
+    #     SERVICE_NAME=app3
+    #     ;;
     project2)
         SERVICE_NAME=app2
         ;;

@@ -16,6 +16,7 @@ if (-not (Test-Path "projects\$ProjectName")) {
 switch ($ProjectName) {
     "project1" { $ServiceName = "app1" }
     "project2" { $ServiceName = "app2" }
+    # "project3" { $ServiceName = "app3" }
     default {
         Write-Host "Unsupported project: $ProjectName" -ForegroundColor Red
         exit 1

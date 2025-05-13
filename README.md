@@ -14,6 +14,9 @@
    ```bash
    cp docker-entrypoint.sh projects/project1/
    cp docker-entrypoint.sh projects/project2/
+4. If you need to adjust your PowerShell execution policy: 
+   ```bash
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 # Project Configuration Requirements
 - Each project needs a `docker-entrypoint.sh`
 - Configure `.env` to use shared MySQL:
@@ -104,7 +107,8 @@ docker exec -it project1-app(container_name) php artisan migrate:fresh --seed --
 # Typical Workflow
 
 - Place project in projects directory/folder
-- Add that project in docker-compose.override.yml accordingly
+- Add that project in docker-compose.override.yml accordingly [as the comment]
+- Add the project in start and stop scripts in docker-scripts folder [as the comment]
 - Copy docker-entrypoint.sh to the project directory/folder
 - Edit .env accordingly [DB Connection]
 - Add database using phpmyadmin

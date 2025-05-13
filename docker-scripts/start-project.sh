@@ -20,9 +20,15 @@ fi
 case "$PROJECT_NAME" in
     project1)
         SERVICE_NAME=app1
+        PORT_NUMBER=8001
         ;;
+    # project3)
+    #     SERVICE_NAME=app3
+    #     PORT_NUMBER=8003
+    #     ;;
     project2)
         SERVICE_NAME=app2
+        PORT_NUMBER=8002
         ;;
     *)
         echo "Unsupported project: $PROJECT_NAME"
@@ -34,4 +40,4 @@ esac
 docker-compose up -d mysql phpmyadmin
 docker-compose up -d $SERVICE_NAME
 
-echo "Started $PROJECT_NAME on http://localhost:$(docker-compose port $SERVICE_NAME 8000 | cut -d: -f2)"
+echo "Started $PROJECT_NAME on http://localhost:$(docker-compose port $SERVICE_NAME $PORT_NUMBER | cut -d: -f2)"

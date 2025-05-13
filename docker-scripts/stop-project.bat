@@ -24,7 +24,11 @@ if "%PROJECT_NAME%"=="project1" (
     set SERVICE_NAME=app1
 ) else if "%PROJECT_NAME%"=="project2" (
     set SERVICE_NAME=app2
-) else (
+)
+:: else if "%PROJECT_NAME%"=="project3" (
+::     set SERVICE_NAME=app3
+:: ) 
+else (
     echo Unsupported project: %PROJECT_NAME%
     exit /b 1
 )

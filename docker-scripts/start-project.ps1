@@ -16,6 +16,7 @@ if (-not (Test-Path "projects\$ProjectName")) {
 switch ($ProjectName) {
     "project1" { $ServiceName = "app1" }
     "project2" { $ServiceName = "app2" }
+    # "project3" { $ServiceName = "app3" }
     default {
         Write-Host "Unsupported project: $ProjectName" -ForegroundColor Red
         exit 1
@@ -34,5 +35,8 @@ $Port = "8001"
 if ($ServiceName -eq "app2") {
     $Port = "8002"
 }
+# elseif ($ServiceName -eq "app3") {
+#     $Port = "8003"
+# }
 
 Write-Host "Started $ProjectName on http://localhost:$Port" -ForegroundColor Green
