@@ -1,0 +1,42 @@
+networks:
+  dev-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    name: shared-mysql-data
+
+services:
+  mysql:
+    image: mysql:8.4.4
+    container_name: shared-mysql
+    ports:
+      - "3316:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: qwerty
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - dev-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: shared-phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: qwerty
+    depends_on:
+      - mysql
+    networks:
+      - dev-network
+    restart: unless-stopped
